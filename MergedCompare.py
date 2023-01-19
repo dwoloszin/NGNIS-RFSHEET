@@ -11,6 +11,7 @@ from os.path import getmtime
 import Count
 import antenaName
 import unique
+import ImportDF
 
 
 
@@ -31,11 +32,11 @@ def processArchive(filtro,wheretoSave):
     NETFLOW_pathImport = '/import/Netflow'
 
 
-    SI = ImportDF(SI_fields,SI_pathImport)
+    SI = ImportDF.ImportDF(SI_fields,SI_pathImport)
     SI.name = 'SI'
     SI = change_columnsName(SI)
 
-    RFSHEET = ImportDF(RFSHEET_fields,RFSHEET_pathImport)
+    RFSHEET = ImportDF.ImportDF(RFSHEET_fields,RFSHEET_pathImport)
     RFSHEET.name = 'RFSHEET'
     arquivoName = 'RFSHEET'
     RFSHEET = change_columnsName(RFSHEET)
@@ -43,7 +44,7 @@ def processArchive(filtro,wheretoSave):
     filtro3 = ['1800 LTE','2100 LTE','2600 LTE','3500 NR','700 LTE','700 NR','LTE 1800MHz','LTE 2100MHz','LTE 2600MHz','LTE 700MHz','NR 3500MHz','NR 700MHz']
     RFSHEET = RFSHEET.loc[RFSHEET['TEC_RFSHEET'].isin(filtro3)]
 
-    NETFLOW = ImportDF(NETFLOW_fields,NETFLOW_pathImport)
+    NETFLOW = ImportDF.ImportDF3(NETFLOW_fields,NETFLOW_pathImport)
     NETFLOW.name = 'NETFLOW'
     NETFLOW = change_columnsName(NETFLOW)
     filtro = ['2.13 Verifica cadastro de projeto de acesso (RF-Sheet definitivo) no NGNIS','2.16 Verifica cadastro de projeto de acesso (RF-Sheet definitivo) no NGNIS']
@@ -307,6 +308,8 @@ def change_columnsName(df):
         df.rename(columns={i:i + '_' + df.name},inplace=True)
     return df
 
+
+'''
 def ImportDF(fields, pathImport):
     pathImportSI = os.getcwd() + pathImport
     all_filesSI = glob.glob(pathImportSI + "/*.csv")
@@ -324,7 +327,7 @@ def ImportDF(fields, pathImport):
 
     return frameSI    
 
-
+'''
 
 def CompareNewAll():
     print("\nProcessing " + os.path.basename(__file__) + '...')
