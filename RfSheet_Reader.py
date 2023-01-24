@@ -34,7 +34,7 @@ def processArchive():
         indexw +=1
         print(indexw,'/',len(all_filesSI))
         #indexw +=1
-        data = pd.read_excel(filename,skiprows=27,sheet_name = 'RFSHEET', nrows=52,usecols = 'A:AC',engine='openpyxl')
+        data = pd.read_excel(filename,skiprows=27,sheet_name = 'RFSHEET', nrows=100,usecols = 'A:AC',engine='openpyxl')
         data.columns = ['Site','Setor','STATUS','Tipo','"Altura(M)"','Azimute (NV)','Tilt Mec','Modelo de Antena','Gain (dBi)','TRX Power (W)','Tilt Elt','Modelo do TRX','Banda','Diplexer1','Diplexer2','EiRP','Triplexer1','Triplexer2','FILTER','Cabo RFS 1/2 SF - Cu (metros)','Cabo RFS 7/8 - Al (metros)','COMBINER (EHCU)','Cabo RFS 1 5/8 - Al (metros)','1/2"','5/8" / 7/8"','Perda(EHCU)_Perda_do_Filter','Dip/Trip','Total da linha','TEC']
         data = data.dropna(subset=['Site'])
         data.insert(0,'Arquivo',arquivoName)
