@@ -30,7 +30,7 @@ def processArchive(filtro,wheretoSave):
 
     NETFLOW_fields = ['Elemento ID','ID Ordem Complexa','Nome da atividade do processo']
     NETFLOW_pathImport = '/import/Netflow'
-
+   
 
     SI = ImportDF.ImportDF(SI_fields,SI_pathImport)
     SI.name = 'SI'
@@ -397,16 +397,18 @@ def processArchiveAsBuilt():
     NETFLOW_pathImport = '/import/Netflow'
 
 
-    SI = ImportDF(SI_fields,SI_pathImport)
+    SI = ImportDF.ImportDF(SI_fields,SI_pathImport)
+    print(SI)
     SI.name = 'SI'
     SI = change_columnsName(SI)
+    
 
-    AsBuilt = ImportDF(AsBuilt_fields,AsBuilt_pathImport)
+    AsBuilt = ImportDF.ImportDF(AsBuilt_fields,AsBuilt_pathImport)
     AsBuilt.name = 'AsBuilt'
     arquivoName = 'AsBuilt'
     AsBuilt = change_columnsName(AsBuilt)
   
-    NETFLOW = ImportDF(NETFLOW_fields,NETFLOW_pathImport)
+    NETFLOW = ImportDF.ImportDF3(NETFLOW_fields,NETFLOW_pathImport)
     NETFLOW.name = 'NETFLOW'
     NETFLOW = change_columnsName(NETFLOW)
     filtro = ['7.3.12 Verifica cadastro de Initial Tunning no NGNIS']
