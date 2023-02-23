@@ -35,7 +35,8 @@ def normalizedAntenaName(df,columnameA,columnameB):
         if str(row[columnameB]) == 'AIR1641_2DS':
             dfCopy.at[index,columnameB] = 'AIR 1641'
 
-
+        if str(row[columnameB]) == 'AIR3219':
+            dfCopy.at[index,columnameB] = 'AIR 3219'
 
         #AIR6449
         #AIR6419
