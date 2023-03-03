@@ -22,5 +22,7 @@ MergedCompare.processArchive(['NOVO','Novo','EXISTENTE','Existente','VERIFICAR']
 
 #Verifica os casos que não tem NEW
 MergedCompare.CompareNewAll()
+
 '''
 
+#Merged = Merged.loc[Merged['%'] != '1.0 (OK)']

@@ -39,7 +39,7 @@ def processArchive():
           data.columns = ['Setor','RNC/BSC/MME','"Altura(M)"','Azimute (NV)','Logical Azimute (NV)','Downtilt (E+M)','Modelo de Antena','Dell0','STATUS','Dell1']
           #data = data.dropna(subset=['Site'])
           data.insert(0,'Arquivo',arquivoName)
-          siteName = site1[0].split(' ')
+          siteName = site1[3].split('.')
           data.insert(1,'Site',siteName[0])
           indexValue = 0
           firstOne = True
@@ -58,7 +58,7 @@ def processArchive():
           data.columns = ['Setor','RNC/BSC/MME','"Altura(M)"','Azimute (NV)','Logical Azimute (NV)','Downtilt (E+M)','Modelo de Antena','Dell0','STATUS']
           #data = data.dropna(subset=['Site'])
           data.insert(0,'Arquivo',arquivoName)
-          siteName = site1[0].split(' ')
+          siteName = site1[3].split('.')
           data.insert(1,'Site',siteName[0])
           indexValue = 0
           firstOne = True
@@ -109,11 +109,12 @@ def processArchive():
         if len(row['Setor2']) == 7 and row['Setor2'][:2] == 'SP' and row['Setor2'][-1:] in ['I','J','K','1','2','3']:
             df.at[index,'STATUS'] = 'VERIFICAR'
 
+        '''
         #Tratar casos 5G
         if row['Setor2'][:2] == '5G':
             df.at[index,'Setor2'] = '4G' + row['Setor2'][2:]
             df.at[index,'Site'] = '4G' + row['Site'][2:]
-
+        '''
 
 
 

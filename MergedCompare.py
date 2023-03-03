@@ -467,6 +467,7 @@ def processArchiveAsBuilt():
     csv_path2 = os.path.join(script_dir, 'export/'+'Merged_AsBuilt'+'/'+'ToDo_'+ 'AsBuilt' +'.csv')
     ArquivoTodo.to_csv(csv_path2,index=True,header=True,sep=';')
 
+    Merged = Merged.loc[Merged['%'] != '1.0 (OK)']
     Merged.to_csv(csv_path,index=True,header=True,sep=';')
     fim = timeit.default_timer()
     print ('duracao: %f' % ((fim - inicio)/60) + ' min')
