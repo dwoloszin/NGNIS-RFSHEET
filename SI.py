@@ -30,7 +30,7 @@ def processArchive():
     lastData = all_filesSI[0][len(all_filesSI[0])-19:len(all_filesSI[0])-11]
     for filename in all_filesSI:
         dataArchive = filename[len(pathImportSI)+14:len(filename)-11]
-        iter_csv = pd.read_csv(filename, index_col=None,header=0, error_bad_lines=False,dtype=str, sep = ';',iterator=True, chunksize=10000, usecols = fields )
+        iter_csv = pd.read_csv(filename, encoding="ANSI", index_col=None,header=0, error_bad_lines=False,dtype=str, sep = ';',iterator=True, chunksize=10000, usecols = fields )
         #df = pd.concat([chunk[(chunk[filtrolabel[0]].isin([filtroValue[0]])) & (chunk[filtrolabel[1]].isin([filtroValue[1]])) & (chunk[filtrolabel[2]].isin(filtroValue2))] for chunk in iter_csv]) # WORKS
         #df = pd.concat([chunk[(chunk[filtrolabel[0]].isin([filtroValue[0]])) & (chunk[filtrolabel[2]].isin(filtroValue2))] for chunk in iter_csv]) # WORKS
         df = pd.concat([chunk[(chunk[filtrolabel[0]].isin([filtroValue[0]]))] for chunk in iter_csv]) # WORKS

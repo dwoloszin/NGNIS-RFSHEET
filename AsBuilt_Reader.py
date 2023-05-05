@@ -71,6 +71,7 @@ def processArchive():
           data = data.drop(data.index[np.where(data.index > (indexValue-1))[0]])
           data = data.reset_index(drop=True)
           df = df.append(data,ignore_index=True)
+          pass
     print('Import de arquivos OK!\n\n')
     #df = NormalizeAntenaName.name(df,''):
 
